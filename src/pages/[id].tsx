@@ -7,7 +7,7 @@ import Sidebar from '@/components/Sidebar';
 import Widgets from '@/components/Widgets';
 import { db } from '@/firebase';
 import { collection, doc, onSnapshot, orderBy, query } from 'firebase/firestore';
-import { getProviders, getSession, useSession } from 'next-auth/react';
+import {  useSession } from 'next-auth/react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react'
@@ -51,7 +51,7 @@ const PostPage = () => {
       <div>
         <Head>
           <title>
-            {post?.username} on Twitter: "{post?.text}"
+            {post?.username} on Twitter: `&quot;`{post?.text}`&quot;`
           </title>
           <link rel="icon" href="/favicon.ico" />
         </Head>
@@ -87,23 +87,3 @@ const PostPage = () => {
   
 export default PostPage;
   
-export async function getServerSideProps(context: any){
-  const trendingResults = await fetch("https://jsonplaceholder.typicode.com/posts").then(
-    (res) => res.json()
-  );
-  const followResults = await fetch("https://jsonplaceholder.typicode.com/photos").then(
-    (res) => res.json()
-  );
-
-  const providers = await getProviders();
-  const session = await getSession(context);
-
-  return {
-    props: {
-      trendingResults,
-      followResults,
-      providers,
-      session,
-    },
-  }
-}

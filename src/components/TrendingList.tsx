@@ -3,14 +3,14 @@ import React from 'react'
 
 const TrendingList = () => {
     return (
-        <div className='mt-4 flex items-center'>
+        <div className='flex items-center mt-4'>
             <div>
                 <p className='text-gray-500 text-[14px] mb-1'>Entertainment · LIVE</p>
-                <h1 className='font-medium pr-2'>Bigg Boss 16: Salman Khan returns with a brand new season</h1>
+                <h1 className='pr-2 font-medium'>Bigg Boss 16: Salman Khan returns with a brand new season</h1>
             </div>
 
             <div>
-                <img className='rounded-[20px]' src="/trending-1.jfif" height="120px" width="120px" />
+                <Image className='rounded-[20px]' src="/trending-1.jfif" height={120} width={120} alt={''} />
             </div>
         </div>
     )
